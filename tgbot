@@ -1,0 +1,24 @@
+from email.mime import message
+from telebot import types
+import telebot
+from aiogram.types import ReplyKeyboardRemove, ReplyKeyboardMarkup, KeyboardButton, InlineKeyboardMarkup, InlineKeyboardButton
+
+bot = telebot.TeleBot('5186091090:AAEDs85Tmt0lYQ3nRysdovyY7JBvA89HmmQ')
+
+
+@bot.message_handler(content_types=['text'])
+def get_text_messages(message):
+    if message.text == "Привет":
+      bot.send_message(message.from_user.id, "Привет, чем я могу тебе помочь?")
+    elif message.text == "Поздороваться":
+      bot.send_message(message.from_user.id, "Привет, чем я могу тебе помочь?")
+    elif message.text == "Сказать 'Привет'":
+      bot.send_message(message.from_user.id, "Привет, чем я могу тебе помочь?")
+    elif message.text == "/help":
+      bot.send_message(message.from_user.id, "Напиши 'Привет' или нажми 'Поздороваться'")
+    elif message.text == "/start":
+      bot.send_message(message.from_user.id, "Привет, я бот Хуан. Я могу поздороваться  с тобой и ещё много чего")  
+    else:
+      bot.send_message(message.from_user.id, "Я тебя не понимаю. Напиши /help.")
+
+bot.polling(none_stop=True, interval=0)
